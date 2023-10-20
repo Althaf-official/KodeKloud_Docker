@@ -70,9 +70,9 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 2023-10-20 07:21:00.630+0000 [id=61]	INFO	hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
 
 ```
-### then you can acces via two method 
+### Now you can acces Jenkins via two method 
 ### 1 .Port mapping
-### 2.internal ip
+### 2 .Internal ip
 
 ### to chek the internal ip 
 ```ruby
