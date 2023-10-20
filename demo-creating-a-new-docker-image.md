@@ -212,11 +212,8 @@ root@e1465bb5f052:/opt# history
    20  history
 root@e1465bb5f052:/opt# 
 
-```
+### concluding these steps 
 
-# steps
-
-```ruby
 apt-get update
 apt-get install -y python3
 apt-get install python3-pip
@@ -251,6 +248,8 @@ COPY app.py /opt/app.py
 
 ENTRYPOINT FLASK_APP=app.py flask run --host=0.0.0.0althaf@mas:~/my-simple-webapp
 ```
+
+Ctrl+D to save and exit
 
 
 ```ruby
@@ -292,7 +291,7 @@ Now, let's look at the contents of the Dockerfile:
 
 After creating this Dockerfile and building the Docker image from it, you can run a Docker container based on this image to deploy a simple web application that runs the Flask server.
 
-Keep in mind that you will also need an "app.py" file in the same directory as the Dockerfile, which contains your actual Flask web application code.
+### Keep in mind that you will also need an "app.py" file in the same directory as the Dockerfile, which contains your actual Flask web application code.
 
 ### create app.py file
 
@@ -322,6 +321,43 @@ althaf@mas:~/my-simple-webapp$
 ```
 
 Ctrl+D to save the file  created through cat
+
+# Build 
+```ruby
+docker build . -t my-simple-webapp
+```
+The command you provided, "docker build . -t my-simple-webapp," is used to create a Docker image from a Dockerfile. Let's break down the command step by step:
+
+1. `docker build`: This part of the command instructs Docker to build an image.
+
+2. `.`: The dot (.) represents the build context. In this context, it means that Docker should look for a Dockerfile in the current directory. The Dockerfile is a text file that contains instructions on how to create a Docker image, including what base image to use, what files to include, what packages to install, and other configuration settings.
+
+3. `-t my-simple-webapp`: The `-t` option, followed by the image name (in this case, "my-simple-webapp"), allows you to tag the image with a name and optionally a tag. This is useful for identifying and referencing the image later. In this case, you are naming the image "my-simple-webapp."
+
+In summary, the command "docker build . -t my-simple-webapp" tells Docker to build an image using the Dockerfile found in the current directory and tag the resulting image as "my-simple-webapp." This image can then be used to create containers for running your web application or service within a Docker environment.
+
+```ruby 
+althaf@mas:~/my-simple-webapp$ docker build . -t my-simple-webapp
+[+] Building 0.1s (10/10) FINISHED                                   docker:default 
+ => [internal] load .dockerignore                                              0.0s
+ => => transferring context: 2B                                                0.0s
+ => [internal] load build definition from Dockerfile                           0.0s
+ => => transferring dockerfile: 214B                                           0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:latest               0.0s
+ => [1/5] FROM docker.io/library/ubuntu                                        0.0s
+ => [internal] load build context                                              0.0s
+ => => transferring context: 28B                                               0.0s
+ => CACHED [2/5] RUN apt-get update                                            0.0s
+ => CACHED [3/5] RUN apt-get install -y python3 python3-pip                    0.0s
+ => CACHED [4/5] RUN pip install flask                                         0.0s
+ => CACHED [5/5] COPY app.py /opt/app.py                                       0.0s
+ => exporting to image                                                         0.0s
+ => => exporting layers                                                        0.0s
+ => => writing image sha256:e65b86eb9d40b6025eedf871e5b3171cf640eaae772ec7ce6  0.0s
+ => => naming to docker.io/library/my-simple-webapp                            0.0s
+althaf@mas:~/my-simple-webapp$ 
+
+```
 
 
 
