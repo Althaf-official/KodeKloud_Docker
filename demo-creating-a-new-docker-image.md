@@ -358,6 +358,104 @@ althaf@mas:~/my-simple-webapp$ docker build . -t my-simple-webapp
 althaf@mas:~/my-simple-webapp$ 
 
 ```
+# Run the container
+
+```ruby
+althaf@mas:~/my-simple-webapp$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS     NAMES
+2ee20d674eb7   my-simple-webapp   "/bin/sh -c 'FLASK_A…"   3 minutes ago    Up 3 minutes              objective_bartik
+```
+```ruby
+docker run my-simple-webapp
+```
+
+```ruby
+althaf@mas:~/my-simple-webapp$ docker run my-simple-webapp
+ * Serving Flask app '/opt/app.py'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.4:8080
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 921-049-655
+172.17.0.1 - - [21/Oct/2023 02:31:39] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [21/Oct/2023 02:31:40] "GET /favicon.ico HTTP/1.1" 404 -
+172.17.0.1 - - [21/Oct/2023 02:31:43] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [21/Oct/2023 02:31:54] "GET /how%20are%20you HTTP/1.1" 200 -
+172.17.0.1 - - [21/Oct/2023 02:32:09] "GET /how%20are%20you%20my%20dear HTTP/1.1" 404 -
+172.17.0.1 - - [21/Oct/2023 02:32:21] "GET /how%20are%20you HTTP/1.1" 200 -
+
+```
+
+![Screenshot from 2023-10-21 06-36-26](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/3edbfe59-b492-4a73-b0e9-20b330fe8c4e)
+
+![Screenshot from 2023-10-21 06-36-39](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/25f5e6c3-8359-41eb-b021-787927da33e9)
+
+# Now the app is runnig locally .Lets push it to the Docker Hub
+
+```ruby
+docker build . -t althafofficial/my-simple-webapp
+```
+
+
+```ruby
+althaf@mas:~/my-simple-webapp$ docker build . -t althafofficial/my-simple-webapp
+ => CACHED [2/5] RUN apt-get update                                            0.0s
+ => CACHED [3/5] RUN apt-get install -y python3 python3-pip                    0.0s
+ => CACHED [4/5] RUN pip install flask                                         0.0s
+ => CACHED [5/5] COPY app.py /opt/app.py                                       0.0s
+
+
+althaf@mas:~/my-simple-webapp$ docker images
+REPOSITORY                                                              TAG       IMAGE ID       CREATED        SIZE
+althafofficial/my-simple-webapp                                         latest    315db2060a8f   14 hours ago   476MB
+my-simple-webapp                                                        latest    e3afa2438aa6   14 hours ago   476MB
+jenkins/jenkins                                                         latest    892693e4fe31   3 days ago     476MB
+```
+```ruby
+docker push althafofficial/my-simple-webapp
+```
+
+```ruby
+althaf@mas:~/my-simple-webapp$ docker push althafofficial/my-simple-webapp
+denied: requested access to the resource is denied
+```
+
+```ruby
+docker login
+```
+
+```ruby
+althaf@mas:~/my-simple-webapp$ docker login
+Log in with your Docker ID or email address to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com/ to create one.
+You can log in with your password or a Personal Access Token (PAT). Using a limited-scope PAT grants better security and is required for organizations using SSO. Learn more at https://docs.docker.com/go/access-tokens/
+
+Username: althafofficial
+Password: 
+WARNING! Your password will be stored unencrypted in /home/althaf/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+
+
+Login Succeeded
+althaf@mas:~/my-simple-webapp$ docker push althafofficial/my-simple-webapp
+Using default tag: latest
+The push refers to repository [docker.io/althafofficial/my-simple-webapp]
+28d9c97a8810: Pushed 
+4e4cf94e6bda: Pushed 
+3d268c57ddca: Pushed 
+838ff486bf53: Pushed 
+256d88da4185: Mounted from library/ubuntu 
+latest: digest: sha256:c64a1d347e2581083cd2f4e16531dbd2b6aa68cc2e46edf1ccf5efdbc7362da1 size: 1372
+althaf@mas:~/my-simple-webapp$ 
+
+```
+# now the Application is available for public
+![Screenshot from 2023-10-21 07-06-11](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/598ecaf7-2687-4b04-8f80-d8908da38060)
 
 
 
