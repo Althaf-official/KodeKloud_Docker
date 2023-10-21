@@ -282,3 +282,6 @@ then inspect the ip of result app
 ![Screenshot from 2023-10-21 19-12-46](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/7bee4199-26dd-4012-ac52-a4266a3a9457)
 ![Screenshot from 2023-10-21 19-16-57](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/ff3daef7-e8ea-48d2-980e-d9b3f9dc3d13)
 ![Screenshot from 2023-10-21 19-17-02](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/15b67760-6782-4dc7-a974-0672e08048e3)
+
+![Screenshot from 2023-10-21 19-36-19](https://github.com/Althaf-official/KodeKloud_Docker/assets/105126131/09013428-0a0b-4123-a6b6-c1a3493984db)
+
